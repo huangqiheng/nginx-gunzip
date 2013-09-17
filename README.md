@@ -1,11 +1,10 @@
 nginx-gunzip
 ============
 
-在nginx作为正向代理的时候，原官方的gunzip模块，在客户端发送gzip的header时将不会生效，这让在正向代理中过滤内容的substitute模块无法工作。参考淘宝姚伟斌的补丁，打包了一个方便自己使用的。
+在nginx作为正向代理的时候，原官方的gunzip模块，在客户端发送gzip的header时将不会生效，这让在正向代理中过滤内容的substitute模块无法工作。参考淘宝姚伟斌的补丁，打包了一个方便自己使用的。本模块大部分代码源自官方版本，只添加了"gunzip_force"指令，使得从后端返回的内容，总是使用gunzip解密。
 
 
-nginx模块编译开发环境
-准备：
+nginx模块编译开发环境准备：
 ```
 apt-get install build-essential
 apt-get install libpcre3-dev libssl-dev
@@ -53,6 +52,7 @@ ngx_module_t *ngx_modules[] = {
 };
 --------------------------------------
 ```
+
 数组最后面的filter具有最先的执行顺序。
 确保顺序执行：
 ngx_http_gunzip_filter_module -> ngx_http_sub_filter_module -> ngx_http_gzip_filter_module
