@@ -111,7 +111,7 @@ http {
                         proxy_http_version 1.1;
                         proxy_buffering off;
                         proxy_set_header "Accept-Encoding"  "gzip";
-                        proxy_set_header "Host" \$http_host;
+                        proxy_set_header "Host" $http_host;
                         proxy_set_header Connection "";
                         proxy_connect_timeout 180;
                         proxy_send_timeout 180;
@@ -121,7 +121,7 @@ http {
                         proxy_busy_buffers_size 64k;
                         proxy_temp_file_write_size 64k;
                         send_timeout 180;
-                        proxy_pass http://\$http_host\$request_uri;
+                        proxy_pass http://$http_host$request_uri;
                 }
         }
 } 
