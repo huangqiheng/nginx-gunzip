@@ -9,6 +9,7 @@ nginx模块编译开发环境准备：
 apt-get install build-essential
 apt-get install libpcre3-dev libssl-dev
 adduser --system --no-create-home --disabled-login --disabled-password --group nginx
+apt-get install git
 ```
 
 配置编译选项：
